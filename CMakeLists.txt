@@ -7,4 +7,4 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )
 
 SET(CMAKE_CXX_FLAGS -pthread)
 
-add_executable(Server main.cpp)
+add_executable(Server main.cpp Demonization.cpp Demonization.h Server.cpp Server.h)

@@ -78,6 +78,18 @@ build CMakeFiles/Server.dir/main.cpp.o: CXX_COMPILER__Server_Debug /home/mrmomen
   OBJECT_DIR = CMakeFiles/Server.dir
   OBJECT_FILE_DIR = CMakeFiles/Server.dir
 
+build CMakeFiles/Server.dir/Demonization.cpp.o: CXX_COMPILER__Server_Debug /home/mrmomenticus/CLionProjects/Server/Demonization.cpp || cmake_object_order_depends_target_Server
+  DEP_FILE = CMakeFiles/Server.dir/Demonization.cpp.o.d
+  FLAGS = -pthread -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/Server.dir
+  OBJECT_FILE_DIR = CMakeFiles/Server.dir
+
+build CMakeFiles/Server.dir/Server.cpp.o: CXX_COMPILER__Server_Debug /home/mrmomenticus/CLionProjects/Server/Server.cpp || cmake_object_order_depends_target_Server
+  DEP_FILE = CMakeFiles/Server.dir/Server.cpp.o.d
+  FLAGS = -pthread -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/Server.dir
+  OBJECT_FILE_DIR = CMakeFiles/Server.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Server
@@ -86,7 +98,7 @@ build CMakeFiles/Server.dir/main.cpp.o: CXX_COMPILER__Server_Debug /home/mrmomen
 #############################################
 # Link the executable Server
 
-build Server: CXX_EXECUTABLE_LINKER__Server_Debug CMakeFiles/Server.dir/main.cpp.o
+build Server: CXX_EXECUTABLE_LINKER__Server_Debug CMakeFiles/Server.dir/main.cpp.o CMakeFiles/Server.dir/Demonization.cpp.o CMakeFiles/Server.dir/Server.cpp.o
   FLAGS = -pthread -g
   OBJECT_DIR = CMakeFiles/Server.dir
   POST_BUILD = :

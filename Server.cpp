@@ -14,9 +14,6 @@ void Server::recording(int &client) { //запись в файл
 
 void Server::connection() { //метод для создания соединения
     int sock = socket(AF_INET, SOCK_STREAM, 0);
-//    fds[0].fd = sock;
-//    fds[0].fd = POLLHUP;
-//    int rev = poll(fds, 1, 10000);
     examination(sock);
     addr.sin_family = AF_INET;
     addr.sin_port = htons(3425);
@@ -26,17 +23,16 @@ void Server::connection() { //метод для создания соедине�
         std::cout << "Не получилось привязать\n";
         exit(0);
     }
-    listen(sock, 10);
+    listen(sock, 1);
     int client = accept(sock, NULL, NULL);
     examination(client);
-    while(true) {
-        int rc   = recv(client, buffer, 256, 0);
-        recording(client);
-        if(rc <=0  ){
-            std::cout << buffer;
+    while (true){
+        int rc   = recv(client, buffer, BUFFER_SIZE, 0);
+        if (rc <= 0){
             close(client);
             break;
         }
+        recording(client);
     }
 
 }

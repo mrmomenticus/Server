@@ -9,14 +9,16 @@
 #include <fstream>
 #include <unistd.h>
 #include <sys/poll.h>
+#include <signal.h>
 class Server {
     char  *buffer = new char(BUFFER_SIZE);
     struct sockaddr_in addr;
-    template<typename T>void examination(const T&value);
     void recording(int &client);
+    void receiving();
 public:
+    static void signalHandler(int sig);
     void connection();
-
+    static inline int sock = socket(AF_INET, SOCK_STREAM, 0);
 };
 
 

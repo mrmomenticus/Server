@@ -2,6 +2,7 @@
 #define SERVER_SERVER_H
 #define  BUFFER_SIZE 16
 #include <iostream>
+#include <sys/stat.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <memory.h>
@@ -11,14 +12,17 @@
 #include <sys/poll.h>
 #include <signal.h>
 class Server {
-    char  *buffer = new char(BUFFER_SIZE);
+    pid_t parpid, sid;
+    static char inline  *buffer = new char(BUFFER_SIZE);
+    static inline int sock = socket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in addr;
+    static void signalHandler(int sig);
     void recording(int &client);
     void receiving();
 public:
-    static void signalHandler(int sig);
     void connection();
-    static inline int sock = socket(AF_INET, SOCK_STREAM, 0);
+    void demonization();
+
 };
 
 
